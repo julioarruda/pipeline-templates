@@ -8,28 +8,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: test
-      run: echo "Hello World"
-    # - uses: actions/checkout@v2
-    # - name: Setup .NET
-    #   uses: actions/setup-dotnet@v1
-    #   with:
-    #     dotnet-version: 6.0.x
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
     
-    # - name: Restore dependencies
-    #   run: dotnet restore
+    - name: Restore dependencies
+      run: dotnet restore
     
-    # - name: Build
-    #   run: dotnet build --configuration Release --no-restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
     
-    # - name: Test
-    #   run: dotnet test --no-build --verbosity normal
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
 
-    # - name: Dotnet Publish
-    #   run: dotnet publish --configuration Release -o ${{ github.workspace }}/demo 
+    - name: Dotnet Publish
+      run: dotnet publish --configuration Release -o ${{ github.workspace }}/demo 
     
-    # - name: Upload Artifact
-    #   uses: actions/upload-artifact@v1
-    #   with:
-    #     name: artifact
-    #     path: ${{ github.workspace }}//demo
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: artifact
+        path: ${{ github.workspace }}//demo
